@@ -109,7 +109,7 @@ class Todo extends Component {
           >
             {/* <Label>New todo</Label> */}
             <Input
-              placeholder="New todo"
+              placeholder="New task"
               value={this.state.newtodo}
               autoCapitalize={'none'}
               onChangeText={newtodo => this.setState({newtodo})}
