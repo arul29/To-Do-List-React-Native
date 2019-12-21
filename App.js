@@ -6,10 +6,17 @@ import Position from './src/screens/Position';
 import {createBottomTabNavigator} from 'react-navigation-tabs';
 import {Icon} from 'native-base';
 import SplashScreen from './src/screens/Splash';
+import Post from './src/screens/Post';
 
 const AppNavigator = createStackNavigator({
   Todo: {
     screen: Todo,
+    navigationOptions: () => ({
+      header: null,
+    }),
+  },
+  Post: {
+    screen: Post,
     navigationOptions: () => ({
       header: null,
     }),
@@ -36,13 +43,27 @@ const BottomNavigator = createBottomTabNavigator(
         ),
       },
     },
+    Post: {
+      screen: Post,
+      navigationOptions: {
+        tabBarLabel: 'Post',
+        tabBarIcon: ({tintColor}) => (
+          <Icon
+            type="FontAwesome"
+            name="newspaper-o"
+            // name="commenting"
+            style={{color: tintColor, fontSize: 23}}
+          />
+        ),
+      },
+    },
     Position: {
       screen: Position,
       navigationOptions: {
         tabBarIcon: ({tintColor}) => (
           <Icon
-            type="FontAwesome"
-            name="map-marker"
+            type="FontAwesome5"
+            name="map-marked-alt"
             style={{color: tintColor, fontSize: 23}}
           />
         ),
