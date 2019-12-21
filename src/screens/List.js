@@ -8,35 +8,43 @@ class List extends Component {
     // });
     return (
       <View>
-        {this.props.todos.map((item, index) => (
-          <ListItem>
-            <CheckBox
-              //   checked={false}
-              checked={item.completed ? true : false}
-              onPress={this.props.markComplete.bind(this, item.id)}
-            />
-            <Body>
-              <Text
-                style={{
-                  textDecorationLine: item.completed ? 'line-through' : 'none',
-                }}>
-                {item.title}
-              </Text>
-            </Body>
-            <Right>
-              <TouchableOpacity
-                style={styles.ButtonDelete}
-                onPress={this.props.deleteTodo.bind(this, item.id)}>
-                {/* <Text>Delete</Text> */}
-                <Icon
-                  type="FontAwesome"
-                  name="trash"
-                  style={{color: 'white'}}
-                />
-              </TouchableOpacity>
-            </Right>
-          </ListItem>
-        ))}
+        {Object.values(this.props.todos)
+          .map((item, index) => (
+            <ListItem key={index}>
+              <CheckBox
+                //   checked={false}
+                checked={item.completed ? true : false}
+                onPress={this.props.markComplete.bind(
+                  this,
+                  item.id,
+                  item.completed,
+                )}
+              />
+              <Body>
+                <Text
+                  style={{
+                    textDecorationLine: item.completed
+                      ? 'line-through'
+                      : 'none',
+                  }}>
+                  {item.title}
+                </Text>
+              </Body>
+              <Right>
+                <TouchableOpacity
+                  style={styles.ButtonDelete}
+                  onPress={this.props.deleteTodo.bind(this, item.id)}>
+                  {/* <Text>Delete</Text> */}
+                  <Icon
+                    type="FontAwesome"
+                    name="trash"
+                    style={{color: 'white'}}
+                  />
+                </TouchableOpacity>
+              </Right>
+            </ListItem>
+          ))
+          .reverse()}
       </View>
     );
   }
